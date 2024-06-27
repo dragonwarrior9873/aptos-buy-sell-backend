@@ -16,7 +16,7 @@ All the model files will be saved in **/lib/models** folder. We will define the 
 
     const Schema = mongoose.Schema;
 
-    export const ContactSchema = new Schema({
+    export const OrderSchema = new Schema({
         firstName: {
             type: String,
             required: 'Enter a first name'
@@ -57,10 +57,10 @@ All the logic will be saved in the **/lib/controllers/crmController.ts**
     //   /lib/controllers/crmController.ts
 
     import * as mongoose from 'mongoose';
-    import { ContactSchema } from '../models/crmModel';
+    import { OrderSchema } from '../models/crmModel';
     import { Request, Response } from 'express';
 
-    const Contact = mongoose.model('Contact', ContactSchema);
+    const Contact = mongoose.model('Contact', OrderSchema);
     export class ContactController{
     ...
     public addNewContact (req: Request, res: Response) {                

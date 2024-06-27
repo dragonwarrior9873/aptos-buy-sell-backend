@@ -1,9 +1,9 @@
 import {Request, Response, NextFunction} from "express";
-import { ContactController } from "../controllers/crmController";
+import { OrderController } from "../controllers/orderController";
 
 export class Routes { 
     
-    public contactController: ContactController = new ContactController() 
+    public orderController: OrderController = new OrderController() 
     
     public routes(app): void {   
         
@@ -14,8 +14,8 @@ export class Routes {
             })
         })
         
-        // Contact 
-        app.route('/contact')
+        // Order 
+        app.route('/order')
         .get((req: Request, res: Response, next: NextFunction) => {
             // middleware
             console.log(`Request from: ${req.originalUrl}`);
@@ -25,17 +25,17 @@ export class Routes {
             // } else {
             //     next();
             // }                        
-        }, this.contactController.getContacts)        
+        }, this.orderController.getOrders)        
 
         // POST endpoint
-        .post(this.contactController.addNewContact);
+        .post(this.orderController.addNewOrder);
 
-        // Contact detail
-        app.route('/contact/:contactId')
-        // get specific contact
-        .get(this.contactController.getContactWithID)
-        .put(this.contactController.updateContact)
-        .delete(this.contactController.deleteContact)
+        // Order detail
+        app.route('/order/:orderId')
+        // get specific order
+        .get(this.orderController.getOrderWithID)
+        .put(this.orderController.updateOrder)
+        .delete(this.orderController.deleteOrder)
 
     }
 }
