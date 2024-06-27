@@ -20,11 +20,11 @@ export class Routes {
             // middleware
             console.log(`Request from: ${req.originalUrl}`);
             console.log(`Request type: ${req.method}`);            
-            if(req.query.key !== '78942ef2c1c98bf10fca09c808d718fa3734703e'){
-                res.status(401).send('You shall not pass!');
-            } else {
-                next();
-            }                        
+            // if(req.query.key !== '78942ef2c1c98bf10fca09c808d718fa3734703e'){
+            //     res.status(401).send('You shall not pass!');
+            // } else {
+            //     next();
+            // }                        
         }, this.contactController.getContacts)        
 
         // POST endpoint

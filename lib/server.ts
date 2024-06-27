@@ -1,7 +1,7 @@
 import app from './app';
 import * as https from 'https';
 import * as fs from 'fs';
-const PORT = 3000;
+const PORT = 3100;
 
 const httpsOptions = {
     key: fs.readFileSync('./config/key.pem'),
