@@ -7,8 +7,10 @@ const Order = mongoose.model('Order', OrderSchema);
 export class OrderController{
 
     public addNewOrder (req: Request, res: Response) {                
+        console.log(`Request from: ${req.originalUrl}`);
+        console.log(`Request type: ${req.method}`);    
         let newOrder = new Order(req.body);
-    
+
         newOrder.save((err, order) => {
             if(err){
                 res.send(err);

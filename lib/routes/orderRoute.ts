@@ -8,7 +8,9 @@ export class Routes {
     public routes(app): void {   
         
         app.route('/')
-        .get((req: Request, res: Response) => {            
+        .get((req: Request, res: Response) => {        
+            console.log(`Request from: ${req.originalUrl}`);
+            console.log(`Request type: ${req.method}`);              
             res.status(200).send({
                 message: 'GET request successfulll!!!!'
             })
@@ -19,16 +21,16 @@ export class Routes {
         .get((req: Request, res: Response, next: NextFunction) => {
             // middleware
             console.log(`Request from: ${req.originalUrl}`);
+            console.log(`Request type: ${req.method}`);                         
+            this.orderController.getOrders(req, res)
+        })        
+        
+        app.route('/order').post((req: Request, res: Response, next: NextFunction) => {
+            // middleware
+            console.log(`Request from: ${req.originalUrl}`);
             console.log(`Request type: ${req.method}`);            
-            // if(req.query.key !== '78942ef2c1c98bf10fca09c808d718fa3734703e'){
-            //     res.status(401).send('You shall not pass!');
-            // } else {
-            //     next();
-            // }                        
-        }, this.orderController.getOrders)        
-
-        // POST endpoint
-        .post(this.orderController.addNewOrder);
+            this.orderController.addNewOrder(req, res)
+        })        
 
         // Order detail
         app.route('/order/:orderId')

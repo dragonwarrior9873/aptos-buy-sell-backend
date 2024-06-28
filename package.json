@@ -23,5 +23,9 @@
     "express": "^4.16.4",
     "mongoose": "^5.7.5",
     "nodemon": "^1.18.9"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.2"
   }
 }
